@@ -32,5 +32,6 @@ public class Account {
 		out.println("계좌번호: "+id+"<br/>");
 		out.println("이름: "+name+"<br/>");
 		out.println("잔액: "+balance+"<br/>");
+		out.println("</p>");
 	}
 }
