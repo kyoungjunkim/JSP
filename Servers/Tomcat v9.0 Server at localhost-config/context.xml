@@ -14,8 +14,12 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
+<<<<<<< HEAD
 --><!-- The contents of this file will be loaded for each web application -->
 <Context>
+=======
+--><!-- The contents of this file will be loaded for each web application --><Context>
+>>>>>>> 209f5b4c8720a9c0b92cf7d5d329e320ba4c7e79
 
     <!-- Default set of monitored resources. If one of these changes, the    -->
     <!-- web application will be reloaded.                                   -->
@@ -27,6 +31,7 @@
     <!--
     <Manager pathname="" />
     -->
+<<<<<<< HEAD
     
     <!-- 커넥션 풀 설정 -->
     <Resource
@@ -59,4 +64,6 @@
     	maxIdle="8"
     	maxWaitMillis="3000"
     	/>
+=======
+>>>>>>> 209f5b4c8720a9c0b92cf7d5d329e320ba4c7e79
 </Context>
