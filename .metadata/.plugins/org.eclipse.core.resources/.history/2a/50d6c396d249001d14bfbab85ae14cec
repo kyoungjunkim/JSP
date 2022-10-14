@@ -1,0 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String sql = "UPDATE `user3` SET `name`=?, `age`=?";
+			sql += "WHERE `uid`=?";
+			
+			
+	response.sendRedirect("./list.jsp");
+
+
+%>

@@ -1,0 +1,51 @@
+<%@page import="bean.StudentBean"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="config.DB"%>
+<%@page import="java.sql.Connection"%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+
+	List<StudentBean> students = null;
+	
+	try{
+		Connection conn = DB.getInstance().getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM `student`");
+		
+		while(rs.next()){
+			StudentBean sb = new StudentBean();
+			sb.setstdNo(rs.getString(1));
+			sb.setstdName(rs.getString(2));
+			sb.setstdHp(rs.getString(3));
+			sb.setstdYear(rs.getInt(4));
+			sb.setstdAddr(rs.getString(5));
+			
+		}
+		
+		stmt.close();
+		rs.close();
+		conn.close();
+		
+		
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+
+
+
+
+%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>student::list</title>
+	</head>
+	<body>
+		<h3>student 목록</h3>
+		<a href="./register.jsp">student 등록</a>
+		
+	</body>
+</html>
