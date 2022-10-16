@@ -8,6 +8,8 @@ public class User5Bean {
 	private int age;
 	private String addr;
 	private String hp;
+	
+	
 	public String getUid() {
 		return uid;
 	}

@@ -15,8 +15,8 @@
 	try{
 		Connection conn = DBCP.getConnection("dbcp_java1db");
 		
-		String sql = "update `user5` set `name`=?, `birth`=?, `gender`=?, `age`=?, `addr`=?, `hp`=? ";
-		       sql += "where `uid`=?";
+		String sql = "UPDATE `user5` SET `name`=?, `birth`=?, `gender`=?, `age`=?, `addr`=?, `hp`=? ";
+		       sql += "WHERE `uid`=?";
 		       
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, name);

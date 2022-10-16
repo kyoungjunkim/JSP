@@ -1,3 +1,4 @@
+<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="config.DBCP"%>
@@ -5,27 +6,32 @@
 <%
 	//전송 데이터 수신
 	request.setCharacterEncoding("utf-8");
-	String uid    = request.getParameter("uid");
+	String custid    = request.getParameter("custid");
 	String name   = request.getParameter("name");
-	String birth  = request.getParameter("birth");
-	String gender = request.getParameter("gender");
-	String age    = request.getParameter("age");
-	String addr   = request.getParameter("addr");
 	String hp     = request.getParameter("hp");
-	try{
-		Connection conn = DBCP.getConnection("dbcp_java1db");
+	String addr   = request.getParameter("addr");
+	String rdate  = request.getParameter("rdate");
+	
+	// 데이터베이스 처리
+		String host = "jdbc:mysql://127.0.0.1:3306/java1_shop";
+		String user = "root";
+		String pass = "1234";
 		
-		String sql = "update `user5` set `name`=?, `birth`=?, `gender`=?, `age`=?, `addr`=?, `hp`=? ";
-		       sql += "where `uid`=?";
+		try{
+			// 1단계
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			// 2단계
+			Connection conn = DriverManager.getConnection(host, user, pass);
+		
+		String sql = "UPDATE `customer` SET `name`=?, `hp`=?, `addr`=?, `rdate`=? ";
+		       sql += "WHERE `custid`=?";
 		       
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, name);
-		psmt.setString(2, birth);
-		psmt.setString(3, gender);
-		psmt.setString(4, age);
-		psmt.setString(5, addr);
-		psmt.setString(6, hp);
-		psmt.setString(7, uid);
+		psmt.setString(2, hp);
+		psmt.setString(3, addr);
+		psmt.setString(4, rdate);
+		psmt.setString(5, custid);
 		
 		psmt.executeUpdate();
 		
