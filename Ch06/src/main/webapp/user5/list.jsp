@@ -72,7 +72,7 @@
 				<td><%= ub.getAddr() %></td>
 				<td><%= ub.getHp() %></td>
 				<td>
-					<a href="./modify.jsp?uid=<%= ub.getUid() %>">수정</a>	
+					<a href="./modify.jsp?uid=<%= ub.getUid() %>">수정</a>	 
 					<a href="#">삭제</a>	
 				</td>
 			</tr>

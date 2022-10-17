@@ -1,4 +1,6 @@
-<%@page import="bean.User5Bean"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="bean.CustBean"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -6,30 +8,40 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-	String uid = request.getParameter("uid");
-	User5Bean ub = null;
+	String custid = request.getParameter("custid");
 	
-	try{
-		Connection conn = DBCP.getConnection("dbcp_java1db");
-		String sql = "select * from `user5` where `uid`=?";
-		PreparedStatement psmt = conn.prepareStatement(sql);
-		psmt.setString(1, uid);
+	//데이터베이스 처리
+		String host = "jdbc:mysql://127.0.0.1:3306/java1_shop";
+		String user = "root";
+		String pass = "1234";
+	
+	CustBean cb = null;
+	
+	
+	
 		
-		ResultSet rs = psmt.executeQuery();
+		
+		
+		
+	try{
+		// 2단계
+				Connection conn = DriverManager.getConnection(host, user, pass);
+				// 3단계
+			 	Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery("SELECT * FROM `customer` WHERE `custid`='"+custid+"'");
 		
 		if(rs.next()){
-			ub = new User5Bean();
-			ub.setUid(rs.getString(1));
-			ub.setName(rs.getString(2));
-			ub.setBirth(rs.getString(3));
-			ub.setGender(rs.getInt(4));
-			ub.setAge(rs.getInt(5));
-			ub.setAddr(rs.getString(6));
-			ub.setHp(rs.getString(7));	
+			cb = new CustBean();
+			cb.setCustid(rs.getString(1));
+			cb.setName(rs.getString(2));
+			cb.setHp(rs.getString(3));	
+			cb.setAddr(rs.getString(4));
+			cb.setRdate(rs.getString(5));	
 		}
 		
 		rs.close();
-		psmt.close();
+		stmt.close();
 		conn.close();		
 		
 	}catch(Exception e){
@@ -40,47 +52,37 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>user5::modify</title>
+		<title>customer::modify</title>
 	</head>
 	<body>
-		<h3>user5 수정</h3>
+		<h3>customer 수정</h3>
 		
 		<a href="../2_DBCPTest.jsp">처음으로</a>
-		<a href="./list.jsp">user5 목록</a>
+		<a href="./list.jsp">customer 목록</a>
 		
 		<form action="./modifyProc.jsp" method="post">
 			<table border="1">
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="uid" value="<%= ub.getUid() %>" readonly="readonly"/></td>
+					<td><input type="text" name="custid" value="<%= cb.getCustid() %>" readonly="readonly"/></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="name" value="<%= ub.getName() %>"/></td>
-				</tr>
-				<tr>
-					<td>생년월일</td>
-					<td><input type="date" name="birth" value="<%= ub.getBirth() %>"/></td>
-				</tr>
-				<tr>
-					<td>성별</td>
-					<td>
-						<label><input type="radio" name="gender" value="1"/>남</label>
-						<label><input type="radio" name="gender" value="2"/>여</label>						
-					</td>
-				</tr>
-				<tr>
-					<td>나이</td>
-					<td><input type="number" name="age" value="<%= ub.getAge() %>"/></td>
-				</tr>
-				<tr>
-					<td>주소</td>
-					<td><input type="text" name="addr" value="<%= ub.getAddr() %>"/></td>
+					<td><input type="text" name="name" value="<%= cb.getName() %>"/></td>
 				</tr>
 				<tr>
 					<td>휴대폰</td>
-					<td><input type="text" name="hp" value="<%= ub.getHp() %>"/></td>
+					<td><input type="text" name="hp" value="<%= cb.getHp() %>"/></td>
 				</tr>
+				<tr>
+					<td>주소</td>
+					<td><input type="text" name="addr" value="<%= cb.getAddr() %>"/></td>
+				</tr>
+				<tr>
+					<td>날짜</td>
+					<td><input type="date" name="rdate" value="<%= cb.getRdate() %>"/></td>
+				</tr>
+				
 				<tr>
 					<td colspan="2" align="right"><input type="submit" value="수정"/></td>
 				</tr>
