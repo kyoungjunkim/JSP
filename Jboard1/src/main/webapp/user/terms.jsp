@@ -23,8 +23,8 @@
     </table>
 
     <p>
-        <a href="/JBoard1/user/login.jsp" class="cancel">취소</a>
-        <a href="/JBoard1/user/register.jsp" class="next">다음</a>
+        <a href="/Jboard1/user/login.jsp" class="cancel">취소</a>
+        <a href="/Jboard1/user/register.jsp" class="next">다음</a>
     </p>            
 </main>
 
