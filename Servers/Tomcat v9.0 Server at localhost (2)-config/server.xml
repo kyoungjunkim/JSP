@@ -152,11 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-<<<<<<< HEAD
-      <Context docBase="Ch01" path="/Ch01" reloadable="true" source="org.eclipse.jst.jee.server:Ch01"/><Context docBase="Ch02" path="/Ch02" reloadable="true" source="org.eclipse.jst.jee.server:Ch02"/><Context docBase="Ch03" path="/Ch03" reloadable="true" source="org.eclipse.jst.jee.server:Ch03"/><Context docBase="Ch05" path="/Ch05" reloadable="true" source="org.eclipse.jst.jee.server:Ch05"/><Context docBase="MustHaveJSP_origin" path="/MustHaveJSP_origin" reloadable="true" source="org.eclipse.jst.jee.server:MustHaveJSP_origin"/><Context docBase="Ch06" path="/Ch06" reloadable="true" source="org.eclipse.jst.jee.server:Ch06"/></Host>
-=======
-      <Context docBase="Ch03" path="/Ch03" reloadable="true" source="org.eclipse.jst.jee.server:Ch03"/><Context docBase="Ch01" path="/Ch01" reloadable="true" source="org.eclipse.jst.jee.server:Ch01"/><Context docBase="Ch02" path="/Ch02" reloadable="true" source="org.eclipse.jst.jee.server:Ch02"/><Context docBase="Ch04" path="/Ch04" reloadable="true" source="org.eclipse.jst.jee.server:Ch04"/></Host>
->>>>>>> 209f5b4c8720a9c0b92cf7d5d329e320ba4c7e79
+      <Context docBase="Jboard1" path="/Jboard1" reloadable="true" source="org.eclipse.jst.jee.server:Jboard1"/><Context docBase="Exam" path="/Exam" reloadable="true" source="org.eclipse.jst.jee.server:Exam"/></Host>
     </Engine>
   </Service>
 </Server>

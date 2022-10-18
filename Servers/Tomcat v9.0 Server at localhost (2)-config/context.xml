@@ -14,12 +14,7 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-<<<<<<< HEAD
---><!-- The contents of this file will be loaded for each web application -->
-<Context>
-=======
 --><!-- The contents of this file will be loaded for each web application --><Context>
->>>>>>> 209f5b4c8720a9c0b92cf7d5d329e320ba4c7e79
 
     <!-- Default set of monitored resources. If one of these changes, the    -->
     <!-- web application will be reloaded.                                   -->
@@ -31,7 +26,6 @@
     <!--
     <Manager pathname="" />
     -->
-<<<<<<< HEAD
     
     <!-- 커넥션 풀 설정 -->
     <Resource
@@ -51,7 +45,7 @@
     	<!-- MaxIdle : 풀에 유지되어야 할 커넥션 갯수 -->
 	   	<!-- MinIdle : 최소한으로 유지되어야 할 커넥션 갯수 -->
     	
-    	<!-- 커넥션 풀 설정 -->
+    		<!-- 커넥션 풀 설정 -->
     <Resource
     	name="dbcp_java1_shop"
     	auth="Container"
@@ -64,6 +58,21 @@
     	maxIdle="8"
     	maxWaitMillis="3000"
     	/>
-=======
->>>>>>> 209f5b4c8720a9c0b92cf7d5d329e320ba4c7e79
+    	
+    	
+    	
+    	<!-- 커넥션 풀 설정 -->
+    <Resource
+    	name="dbcp_java1_board"
+    	auth="Container"
+    	type="javax.sql.DataSource"
+    	driverClassName="com.mysql.cj.jdbc.Driver"
+    	url="jdbc:mysql://127.0.0.1:3306/java1_board"
+    	username="java1_board"
+    	password="1234"
+    	maxTotal="8"
+    	maxIdle="8"
+    	maxWaitMillis="3000"
+    	/>
 </Context>
+
