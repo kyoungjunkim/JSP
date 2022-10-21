@@ -62,7 +62,7 @@
 			// 이메일 검증
 			// 휴대폰 검증
 			
-			return false;
+			//return false;
 		});
 	});
 
