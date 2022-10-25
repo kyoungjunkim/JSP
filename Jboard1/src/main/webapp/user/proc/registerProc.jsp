@@ -1,4 +1,5 @@
-<%@page import="config.DBCP"%>
+<%@page import="kr.co.jboard1.db.Sql"%>
+<%@page import="kr.co.jboard1.db.DBCP"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
@@ -25,22 +26,11 @@
 		
 		Connection conn = DBCP.getConnection(); //커넥션 가져오기
 		
-		String sql = "insert into `board_user` set ";
-		sql += "`uid`=?,";
-		sql += "`pass`=SHA2(?,256),";
-		sql += "`name`=?,";
-		sql += "`nick`=?,";
-		sql += "`email`=?,";
-		sql += "`hp`=?,";
-		sql += "`zip`=?,";
-		sql += "`addr1`=?,";
-		sql += "`addr2`=?,";
-		sql += "`regip`=?,";
-		sql += "`rdate`= NOW()";
+		
 		
 		// 위에 쿼리문에 ?같이 준비만 되어있는 쿼리문일때는 PrepareStatement, 완성된 쿼리문일때 Statement
 		
-		PreparedStatement psmt = conn.prepareStatement(sql);
+		PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_USER);
 		psmt.setString(1,uid);
 		psmt.setString(2,pass1);
 		psmt.setString(3,name);
