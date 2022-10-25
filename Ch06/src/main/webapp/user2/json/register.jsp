@@ -1,4 +1,4 @@
-<%@page import="config.JDBC"%>
+<%@page import="kr.co.jboard1.db.JDBC"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.google.gson.JsonObject"%>
