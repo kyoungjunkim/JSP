@@ -35,6 +35,9 @@
 	
 	try{
 		Connection conn = DBCP.getConnection();
+		// 트랜잭션 시작
+		conn.setAutoCommit(false); // 여기부터
+		
 		Statement stmt = conn.createStatement();
 		PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_ARTICLE);
 		
@@ -45,7 +48,10 @@
 		psmt.setString(5, regip);
 		
 		psmt.executeUpdate(); //insert
-		ResultSet rs = stmt.executeQuery(Sql.SELECT_MAX_NO);
+		ResultSet rs = stmt.executeQuery(Sql.SELECT_MAX_NO); //select
+		
+		//작업확정
+		conn.commit(); //여기까지 하나의 작업으로 만든다
 		
 		if(rs.next()){
 			parent = rs.getInt(1); 
