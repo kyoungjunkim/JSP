@@ -1,3 +1,6 @@
+<%@page import="java.io.BufferedOutputStream"%>
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.BufferedInputStream"%>
 <%@page import="kr.co.jboard1.dao.ArticleDAO"%>
 <%@page import="kr.co.jboard1.bean.FileBean"%>
 <%@page import="kr.co.jboard1.db.Sql"%>
@@ -18,9 +21,11 @@
 	ArticleDAO dao = ArticleDAO.getInstance();
 	
 	// 파일 정보 가져오기
-	FileBean fb = dao. selectFile(fno);
+	FileBean fb = dao.selectFile(fno);
 	
 	//파일 다운로드 카운트 +1
+	dao.updateFileDownload(fno);
+	
 	
 	
 	
@@ -36,5 +41,22 @@
 	//파일 다운로드 스트림 작업
 	String savePath = application.getRealPath("/file");
 	File file = new File(savePath+"/"+fb.getNewName());
+	
+	BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
+	BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
 
+	while(true){
+		
+		int data = bis.read();
+		
+		if(data == -1){
+			break;
+		}
+		
+		bos.write(data);
+	}
+	
+	bos.close();
+	bis.close();
+	
 %>
