@@ -1,7 +1,6 @@
 package kr.co.jboard1.db;
 
 public class Sql {
-	
 	// user
 	public static final String INSERT_USER      = "insert into `board_user` set "
 												+ "`uid`=?,"
@@ -47,7 +46,7 @@ public class Sql {
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`no`) FROM `board_article` where `parent`=0";	
 	public static final String SELECT_ARTICLES = "SELECT a.*, b.`nick` FROM `board_article` AS a "
 												+ "JOIN `board_user` AS b ON a.uid = b.uid "
-												+ "where `parent` = 0 "
+												+ "WHERE `parent` = 0 "
 												+ "ORDER BY `no` DESC "
 												+ "LIMIT ?, 10";
 	
@@ -58,15 +57,18 @@ public class Sql {
 												+ "WHERE `no`=?";
 	
 	public static final String SELECT_FILE = "select * from `board_file` where `fno`=?";
-	public static final String SELECT_COMMENTS = "SELECT a.*, b.nick FROM `board_article` AS "
-												+"JOIN `board_user` AS b USING (`uid`) "
-												+"WHERE `parent`=9 ORDER BY `no` ASC";
-			
+	public static final String SELECT_COMMENTS = "SELECT a.*, b.nick FROM `board_article` AS a "
+												+ "JOIN `board_user` AS b USING (`uid`) "
+												+ "WHERE `parent`=? ORDER BY `no` ASC";
+	
 	public static final String SELECT_COMMENT_LATEST = "SELECT a.*, b.nick FROM `board_article` AS a "
-														+"JOIN `board_user` AS b USING(`uid`) "
-														+"WHERE `parent` != 0 ORDER BY `no` DESC LIMIT 1";
+														+ "JOIN `board_user` AS b USING(`uid`) "
+														+ "WHERE `parent` != 0 ORDER BY `no` DESC LIMIT 1";
 	
 	public static final String UPDATE_ARTICLE_HIT = "UPDATE `board_article` SET `hit` = `hit` + 1 WHERE `no`=?";
-	public static final String UPDATE_FILE_DOWNLOAD = "UPDATE `board_file` SET `download` = `download` + 1 WHERE `fno`=?";
+	public static final String UPDATE_FILE_DOWNLOAD = "UPDATE `board_file` SET `download` = `download` + 1 WHERE `fno`=?";  
 	
+	public static final String UPDATE_COMMENT = "UPDATE `board_article` SET `content`=?, `rdate`=NOW() WHERE `no`=?";
+	
+	public static final String DELETE_COMMENT = "delete from `board_article` where `no`=?";
 }
