@@ -24,7 +24,6 @@
 		currentPage = Integer.parseInt(pg);	
 	}
 	
-	
 	start = (currentPage - 1) * 10;
 	currentPageGroup = (int)Math.ceil(currentPage / 10.0);
 	pageGroupStart = (currentPageGroup - 1) * 10 + 1;
