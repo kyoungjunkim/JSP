@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/_header.jsp" %>
+<%
+	String group = request.getParameter("group");
+	String cate  = request.getParameter("cate");
+	pageContext.include("./_"+group+".jsp");
+%>
         <main id="board" class="view">
             
             <table>
@@ -20,8 +25,8 @@
 
             <div>
                 <a href="#" class="btn btnRemove">삭제</a>
-                <a href="/Farmstory1/board/modify.jsp" class="btn btnModify">수정</a>
-                <a href="/Farmstory1/board/list.jsp" class="btn btnList">목록</a>
+                <a href="/Farmstory1/board/modify.jsp?group=<%= group %>&cate=<%= cate %>" class="btn btnModify">수정</a>
+                <a href="/Farmstory1/board/list.jsp?group=<%= group %>&cate=<%= cate %>" class="btn btnList">목록</a>
             </div>
 
             <!-- 댓글목록 -->
@@ -51,4 +56,8 @@
                 </form>
             </section>
         </main>
-<%@ include file="/_footer.jsp" %>
+        </article>
+    </section>
+</div>
+
+<%@ include file="../_footer.jsp" %>

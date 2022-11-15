@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/_header.jsp" %>
+<%
+	String group = request.getParameter("group");
+	String cate  = request.getParameter("cate");
+	pageContext.include("./_"+group+".jsp");
+%>
         <main id="board" class="modify">
             
             <form action="#">
@@ -20,7 +25,7 @@
                 </table>
 
                 <div>
-                    <a href="/Farmstory1/board/view.jsp" class="btn btnCancel">취소</a>
+                    <a href="/Farmstory1/board/view.jsp?group=<%= group %>&cate=<%= cate %>" class="btn btnCancel">취소</a>
                     <input type="submit" value="수정완료" class="btn btnComplete"/>
                 </div>
             </form>
