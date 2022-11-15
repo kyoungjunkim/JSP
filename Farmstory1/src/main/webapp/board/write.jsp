@@ -26,7 +26,7 @@
                 </table>
 
                 <div>
-                    <a href="/Farmstory1/board/list.jsp?gropu=<%= group %>&cate=<%= cate %>" class="btn btnCancel">취소</a>
+                    <a href="/Farmstory1/board/list.jsp?group=<%= group %>&cate=<%= cate %>" class="btn btnCancel">취소</a>
                     <input type="submit" value="작성완료" class="btn btnComplete"/>
                 </div>
             </form>
