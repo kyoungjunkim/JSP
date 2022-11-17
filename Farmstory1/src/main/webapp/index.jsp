@@ -50,7 +50,7 @@
 				let url = "/Farmstory1/board/view.jsp?group=community&cate=faq&pg=1&no="+latest.no;
 				$('#tabs-3 .txt').append("<li><a href='"+url+"'>· "+latest.title+"</a></li>");	
 			}
-		});
+		}); 
 	});
 	
 </script>
@@ -166,17 +166,17 @@
                 </ul>
                 <div id="tabs-1">
                     <ul class="txt">
-                        <img src="./img/loading.gif" class="loading">
+                        <li><img src="./img/loading.gif" class="loading"></li>
                     </ul>
                 </div>
                 <div id="tabs-2">
                     <ul class="txt">
-                        <img src="./img/loading.gif" class="loading">
+                        <li><img src="./img/loading.gif" class="loading"></li>
                     </ul>
                 </div>
                 <div id="tabs-3">
                     <ul class="txt">
-                        <img src="./img/loading.gif" class="loading">
+                        <li><img src="./img/loading.gif" class="loading"></li>
                     </ul>
                 </div>
             </div>

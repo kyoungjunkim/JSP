@@ -12,7 +12,7 @@
     <title>팜스토리</title>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"/>
-    <link rel="stylesheet" href="/Farmstory1/css/style.css"/>
+    <link rel="stylesheet" href="/Farmstory1/css/style.css?after"/>
     <link rel="stylesheet" href="/Farmstory1/user/css/style.css"/>
     <link rel="stylesheet" href="/Farmstory1/board/css/style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
