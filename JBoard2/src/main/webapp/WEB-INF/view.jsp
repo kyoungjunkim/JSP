@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="/_header.jsp"/>
+<jsp:include page="./_header.jsp"/>
         <main id="board">
             <section class="view">
                 
@@ -23,8 +23,8 @@
                 
                 <div>
                     <a href="#" class="btn btnRemove">삭제</a>
-                    <a href="./modify.jsp" class="btn btnModify">수정</a>
-                    <a href="./list.jsp" class="btn btnList">목록</a>
+                    <a href="/JBoard2/modify.do" class="btn btnModify">수정</a>
+                    <a href="/JBoard2/list.do" class="btn btnList">목록</a>
                 </div>
 
                 <!-- 댓글목록 -->
@@ -59,4 +59,4 @@
 
             </section>
         </main>
-        <jsp:include page="/_footer.jsp"/>
+        <jsp:include page="./_footer.jsp"/>

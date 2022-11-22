@@ -1,4 +1,4 @@
-package kr.co.jboard2.controller;
+package kr.co.jboard2.controller.user;
 
 import java.io.IOException;
 
@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/write.do")
-public class WriteController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/user/findIdResult.do")
+public class FindIdResultController extends HttpServlet {
+	
+private static final long serialVersionUID = 1L;
 	
 	@Override
 	public void init() throws ServletException {
@@ -19,7 +20,7 @@ public class WriteController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/write.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/user/findIdResult.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

@@ -29,8 +29,8 @@
                 </p>
 
                 <div>
-                    <a href="./login.jsp" class="btn btnCancel">로그인</a>
-                    <a href="./register.jsp" class="btn btnNext">비밀번호 찾기</a>
+                    <a href="/JBoard2/user/login.do" class="btn btnCancel">로그인</a>
+                    <a href="/JBoard2/user/findPw.do" class="btn btnNext">비밀번호 찾기</a>
                 </div>
             </section>
         </main>

@@ -13,7 +13,7 @@ import com.google.gson.JsonObject;
 
 import kr.co.jboard2.dao.UserDAO;
 
-@WebServlet("/user/CheckNick.do")
+@WebServlet("/user/checkNick.do")
 public class CheckNickController extends HttpServlet{
 	
 	
