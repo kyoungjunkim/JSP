@@ -1,5 +1,73 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="./_header.jsp"/>
+<script>
+	let isEmailAuthOk = false;
+	let receivedCode = 0;
+	
+	$(function () {
+		$('.btnAuth').click(function () {
+			
+			let email = $('input[name=email]').val();
+			
+			if(email == ''){
+				alert('이메일을 입력 하세요.');
+				return;
+			}
+			if(isEmailAuthOk){
+				return;
+			}	
+			
+			isEmailAuthOk = true;
+			
+			$('.resultEmail').text('인증코드 전송 중입니다. 잠시만 기다리세요...');
+			
+			setTimeout(() => {
+				
+				$.ajax({
+					url: '/JBoard2/user/emailAuth.do',
+					method: 'GET',
+					data: {"email": email},
+					dataType: 'json',
+					success: function (data) {
+						if(data.status > 0){
+							isEmailAuthOk = true;
+							$('.resultEmail').text('이메일을 확인 후 인증코드를 입력하세요.');
+							receivedCode = data.code;
+						}else{
+							isEmailAuthOk = false;
+							alert('메일전송이 실패 했습니다.\n다시 시도 하시기 바랍니다.');
+						}
+					}
+				});
+				
+				
+			}, 1000);
+			
+		});
+		
+		$('.btnConfirm').click(function() {
+			let code = $('input[name=auth]').val();
+			
+			if(code == ''){
+				alert('이메일 확인 후 인증코드를 입력하세요.');
+				return;
+			}
+			
+			
+			if(code == receivedCode){
+				$('input[name=email]').attr('readonly', true);
+				$('.resultEmail').text('이메일이 인증 되었습니다.');
+			}else{
+				alert('인증코드가 틀립니다.\n다시 확인 하십시오.');
+			}
+		});
+		
+		
+	});
+
+
+
+</script>
         <main id="user">
             <section class="find findId">
                 <form action="#">
@@ -15,6 +83,7 @@
                                 <div>
                                     <input type="email" name="email" placeholder="이메일 입력"/>
                                     <button type="button" class="btnAuth">인증번호 받기</button>
+                                    <span class="resultEmmail"></span>
                                 </div>
                                 <div>
                                     <input type="text" name="auth" disabled placeholder="인증번호 입력"/>
