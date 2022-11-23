@@ -9,24 +9,21 @@ import kr.co.jboard2.vo.TermsVo;
 import kr.co.jboard2.vo.UserVo;
 
 public class UserDAO extends DBHelper {
-	
-	private static UserDAO instance = new UserDAO();
-	
-	public static  UserDAO getInstance() {
-		return instance;
-	} 
-	
-	
-	private UserDAO() {}
 
+	private static UserDAO instance = new UserDAO();
+	public static UserDAO getInstance() {
+		return instance;
+	}
+	private UserDAO() {}
+	
 	// 로거 생성
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	
 	public void insertUser(UserVo vo) {
-		
 		try {
 			logger.info("insertUser...");
+			
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.INSERT_USER);
 			psmt.setString(1, vo.getUid());
@@ -40,19 +37,19 @@ public class UserDAO extends DBHelper {
 			psmt.setString(9, vo.getAddr2());
 			psmt.setString(10, vo.getRegip());
 			psmt.executeUpdate();
-			
 			close();
+			
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		
-		
 	}
+	
 	public TermsVo selectTerms() {
 		
 		TermsVo vo = null;
 		try {
 			logger.info("selectTerms start...");
+			
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_TERMS);
@@ -62,11 +59,14 @@ public class UserDAO extends DBHelper {
 				vo.setTerms(rs.getString(1));
 				vo.setPrivacy(rs.getString(2));
 			}
+			
 			close();
+			
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		logger.debug("vo : "+ vo);
+		
+		logger.debug("vo : " + vo);
 		return vo;
 	}
 	
@@ -75,54 +75,53 @@ public class UserDAO extends DBHelper {
 		int result = 0;
 		
 		try {
-			logger.info("selectCheckUid...");
+			logger.info("selectCheckUid");
+			
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.SELECT_COUNT_UID);
 			psmt.setString(1, uid);
-			
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
 				result = rs.getInt(1);
 			}
-			close();
 			
-					
+			close();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		logger.debug("result: "+ result);
+		
+		logger.debug("result : " + result);
+		
 		return result;
 	}
 	
-		public int selectCountNick(String nick) {
-				
-				int result = 0;
-				
-				try {
-					logger.info("selectCheckNick...");
-					conn = getConnection();
-					psmt = conn.prepareStatement(Sql.SELECT_COUNT_NICK);
-					psmt.setString(1, nick);
-					
-					rs = psmt.executeQuery();
-					
-					if(rs.next()) {
-						result = rs.getInt(1);
-					}
-					close();
-					
-							
-				}catch (Exception e) {
-					logger.error(e.getMessage());
-				}
-				logger.debug("result: "+ result);
-				return result;
-			}
-
-	
-	public UserVo selectUser(String uid, String pass) {
+	public int selectCountNick(String nick) {
 		
+		int result = 0;
+		
+		try {
+			logger.info("selectCheckNick");
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_COUNT_NICK);
+			psmt.setString(1, nick);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			close();
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		logger.debug("result : " + result);
+		
+		return result;
+	}
+	public UserVo selectUser(String uid, String pass) {
 		
 		UserVo vo = null;
 		
@@ -150,15 +149,95 @@ public class UserDAO extends DBHelper {
 				vo.setRegip(rs.getString(11));
 				vo.setRdate(rs.getString(12));
 			}
+			
 			close();
+			
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		logger.debug("vo :"+vo);
+		
+		logger.debug("vo : " + vo);
 		return vo;
 	}
-	public void selectUsers() {}
-	public void updateUser() {}
-	public void deleteUser() {}
 	
+	public void selectUsers() {}
+	
+	public UserVo selectUserForFindId(String name, String email) {
+		
+		UserVo vo = null;
+		
+		try {
+			logger.info("selectUserForFindId...");
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_USER_FOR_FIND_ID);
+			psmt.setString(1, name);
+			psmt.setString(2, email);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				vo = new UserVo();
+				vo.setUid(rs.getString(1));
+				vo.setName(rs.getString(2));
+				vo.setEmail(rs.getString(3));
+				vo.setRdate(rs.getString(4));
+			}
+			close();
+			
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return vo;
+	}
+	
+	public int selectUserForFindPw(String uid, String email) {
+		
+		int result = 0;
+		
+		try {
+			logger.info("selectUserForFindPw...");
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_USER_FOR_FIND_PW);
+			psmt.setString(1, uid);
+			psmt.setString(2, email);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			close();
+			
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return result;
+	}
+	
+	
+	public void updateUser() {}
+	
+	public int updateUserPassword(String uid, String pass) {
+		
+		int result = 0;
+		try {
+			logger.info("updateUserPassword...");
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.UPDATE_USER_PASSWORD);
+			psmt.setString(1, pass);
+			psmt.setString(2, uid);
+			result = psmt.executeUpdate();
+			
+			close();			
+			
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
+	
+	public void deleteUser() {}
 }

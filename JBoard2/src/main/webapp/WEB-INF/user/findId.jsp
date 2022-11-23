@@ -1,71 +1,46 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="./_header.jsp"/>
+<<script src="/JBoard2/js/emailAuth.js"></script>
+
+
 <script>
-	let isEmailAuthOk = false;
-	let receivedCode = 0;
-	
-	$(function () {
-		$('.btnAuth').click(function () {
-			
-			let email = $('input[name=email]').val();
-			
-			if(email == ''){
-				alert('이메일을 입력 하세요.');
-				return;
-			}
+	$(function() {
+		
+		$('.btnNext').click(function() {
 			if(isEmailAuthOk){
-				return;
-			}	
-			
-			isEmailAuthOk = true;
-			
-			$('.resultEmail').text('인증코드 전송 중입니다. 잠시만 기다리세요...');
-			
-			setTimeout(() => {
+				
+				let name = $('input[name=name]').val();
+				let email = $('input[name=email]').val();
+				
+				let jsonData = {
+						"name": name,
+						"email": email
+				};
 				
 				$.ajax({
-					url: '/JBoard2/user/emailAuth.do',
-					method: 'GET',
-					data: {"email": email},
+					url: '/JBoard2/user/findId.do',
+					type: 'post',
+					data: jsonData,
 					dataType: 'json',
-					success: function (data) {
-						if(data.status > 0){
-							isEmailAuthOk = true;
-							$('.resultEmail').text('이메일을 확인 후 인증코드를 입력하세요.');
-							receivedCode = data.code;
+					success: function(data) {
+						
+						if(data.result == 1){
+							location.href = "/JBoard2/user/findIdResult.do";
 						}else{
-							isEmailAuthOk = false;
-							alert('메일전송이 실패 했습니다.\n다시 시도 하시기 바랍니다.');
+							alert('해당하는 사용자가 존재하지 않습니다.\n이름과 이메일을 다시 확인하십시오.');
 						}
 					}
 				});
-				
-				
-			}, 1000);
-			
-		});
-		
-		$('.btnConfirm').click(function() {
-			let code = $('input[name=auth]').val();
-			
-			if(code == ''){
-				alert('이메일 확인 후 인증코드를 입력하세요.');
-				return;
-			}
-			
-			
-			if(code == receivedCode){
-				$('input[name=email]').attr('readonly', true);
-				$('.resultEmail').text('이메일이 인증 되었습니다.');
+
+				return false;
 			}else{
-				alert('인증코드가 틀립니다.\n다시 확인 하십시오.');
+				alert('이메일 인증을 하셔야 합니다.');
+				return false;
 			}
 		});
-		
-		
 	});
-
-
+	
+	
 
 </script>
         <main id="user">
@@ -82,12 +57,13 @@
                             <td>
                                 <div>
                                     <input type="email" name="email" placeholder="이메일 입력"/>
-                                    <button type="button" class="btnAuth">인증번호 받기</button>
-                                    <span class="resultEmmail"></span>
+                                     <span class="resultEmail"></span>
+                                    <button type="button" class="btnAuth" id="btnEmail">인증번호 받기</button>
+                                   
                                 </div>
-                                <div>
-                                    <input type="text" name="auth" disabled placeholder="인증번호 입력"/>
-                                    <button type="button" class="btnConfirm">확인</button>
+                                <div class="auth">
+                                    <input type="text" name="auth" placeholder="인증번호 입력"/>
+                                    <button type="button" class="btnConfirm" id="btnEmailConfirm">확인</button>
                                 </div>
                             </td>
                         </tr>                        
