@@ -3,7 +3,7 @@
         <main id="board">
             <section class="write">
 
-                <form action="#">
+                <form action="/JBoard2/write.do" method="post" enctype="multipart/form-data">
                     <table border="0">
                         <caption>글쓰기</caption>
                         <tr>
