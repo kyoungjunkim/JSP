@@ -6,20 +6,20 @@
 <%@page import="javax.naming.Context"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-		request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 		String bookId = request.getParameter("bookId");
 		String bookName = request.getParameter("bookName");
 		String publisher = request.getParameter("publisher");
 		String price = request.getParameter("price");
-			
+	
 	
 	
 	
 		
 		try{
-			
-		Connection conn = DBCP.getConnection(); 
-			
+	
+		Connection conn = DBHelper.getConnection(); 
+	
 		
 		String sql = "INSERT INTO `book` VALUES (?,?,?,?);";
 		PreparedStatement psmt = conn.prepareStatement(sql);
@@ -43,6 +43,4 @@
 	
 	
 	response.sendRedirect("./list.jsp");
-	
-
 %>

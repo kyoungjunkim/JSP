@@ -7,13 +7,13 @@
 <%@page import="kr.co.jboard1.db.DBCP"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 	String custId = request.getParameter("custId");
 	
 	CustBean cb = null;
 	
 	try{
-		Connection conn = DBCP.getConnection();
+		Connection conn = DBHelper.getConnection();
 		String sql = "select * from `customer` where `custId`=?";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, custId);
@@ -23,12 +23,12 @@
 		
 		
 		if(rs.next()){
-			cb = new CustBean();
-			cb.setCustId(rs.getInt(1));
-			cb.setName(rs.getString(2));
-			cb.setAddr(rs.getString(3));
-			cb.setPhone(rs.getString(4));
-			
+	cb = new CustBean();
+	cb.setCustId(rs.getInt(1));
+	cb.setName(rs.getString(2));
+	cb.setAddr(rs.getString(3));
+	cb.setPhone(rs.getString(4));
+	
 		}
 		
 		rs.close();

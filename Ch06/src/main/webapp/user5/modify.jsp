@@ -5,12 +5,12 @@
 <%@page import="kr.co.jboard1.db.DBCP"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 	String uid = request.getParameter("uid");
 	User5Bean ub = null;
 	
 	try{
-		Connection conn = DBCP.getConnection("dbcp_java1db");
+		Connection conn = DBHelper.getConnection("dbcp_java1db");
 		String sql = "select * from `user5` where `uid`=?";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, uid);
@@ -18,14 +18,14 @@
 		ResultSet rs = psmt.executeQuery();
 		
 		if(rs.next()){
-			ub = new User5Bean();
-			ub.setUid(rs.getString(1));
-			ub.setName(rs.getString(2));
-			ub.setBirth(rs.getString(3));
-			ub.setGender(rs.getInt(4));
-			ub.setAge(rs.getInt(5));
-			ub.setAddr(rs.getString(6));
-			ub.setHp(rs.getString(7));	
+	ub = new User5Bean();
+	ub.setUid(rs.getString(1));
+	ub.setName(rs.getString(2));
+	ub.setBirth(rs.getString(3));
+	ub.setGender(rs.getInt(4));
+	ub.setAge(rs.getInt(5));
+	ub.setAddr(rs.getString(6));
+	ub.setHp(rs.getString(7));	
 		}
 		
 		rs.close();

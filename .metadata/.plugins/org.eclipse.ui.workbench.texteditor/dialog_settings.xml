@@ -8,50 +8,50 @@
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Hit"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="hit"/>
-			<item value="JBoard1"/>
-			<item value="ob"/>
-			<item value="order"/>
-			<item value="cb"/>
-			<item value="CustomerBean"/>
-			<item value="Rdate"/>
-			<item value="Addr"/>
-			<item value="hp"/>
-			<item value="prodname"/>
-			<item value="Name"/>
-			<item value="getName"/>
-			<item value="Uid"/>
+			<item value="pg"/>
+			<item value="eVO"/>
+			<item value="rVO"/>
+			<item value="sVO"/>
+			<item value="VO"/>
+			<item value=".html"/>
+			<item value="FindPw"/>
 			<item value="Jboard1"/>
 			<item value="book"/>
+			<item value="user1"/>
+			<item value="success"/>
+			<item value="article"/>
+			<item value="Modify"/>
+			<item value="ModyFy"/>
+			<item value="Modyfy"/>
 		</list>
 		<list key="replacehistory">
-			<item value="Jboard1"/>
-			<item value="pb"/>
-			<item value="prod"/>
-			<item value="ob"/>
-			<item value="OrderBean"/>
-			<item value="company"/>
-			<item value="price"/>
-			<item value="stock"/>
-			<item value="prodName"/>
-			<item value="Prodname"/>
-			<item value="ProdNo"/>
-			<item value="JBoard1"/>
-			<item value="cust"/>
-			<item value="phone"/>
-			<item value="Addr"/>
+			<item value="eVo"/>
+			<item value="rVo"/>
+			<item value="sVo"/>
+			<item value="Vo"/>
+			<item value=".jsp"/>
+			<item value="FindResult"/>
+			<item value="Jboard2"/>
+			<item value="customer"/>
+			<item value="ab"/>
+			<item value="Register"/>
+			<item value="Modify"/>
+			<item value="Modyfy"/>
+			<item value="ModyFy"/>
+			<item value="List"/>
+			<item value="Welcome"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="352"/>
-		<item key="DIALOG_Y_ORIGIN" value="219"/>
+		<item key="DIALOG_X_ORIGIN" value="608"/>
+		<item key="DIALOG_Y_ORIGIN" value="64"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="400"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

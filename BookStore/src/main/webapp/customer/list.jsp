@@ -9,10 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-	List <CustBean> custs = null;
+List <CustBean> custs = null;
 	
 	try{
-		Connection conn = DBCP.getConnection();
+		Connection conn = DBHelper.getConnection();
 		
 		Statement stmt = conn.createStatement();
 		
@@ -22,13 +22,13 @@
 		
 
 		while(rs.next()){
-			CustBean cb = new CustBean();
-			cb.setCustId(rs.getInt(1));
-			cb.setName(rs.getString(2));
-			cb.setAddr(rs.getString(3));
-			cb.setPhone(rs.getString(4));
-			
-			custs.add(cb);
+	CustBean cb = new CustBean();
+	cb.setCustId(rs.getInt(1));
+	cb.setName(rs.getString(2));
+	cb.setAddr(rs.getString(3));
+	cb.setPhone(rs.getString(4));
+	
+	custs.add(cb);
 		}
 		rs.close();
 		stmt.close();
@@ -38,11 +38,6 @@
 	}catch(Exception e){
 		e.printStackTrace();
 	}
-
-
-
-
-
 %>
 <!DOCTYPE html>
 <html>

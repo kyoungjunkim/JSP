@@ -6,22 +6,21 @@
 <%@page import="javax.naming.Context"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-		
-		//전송데이터 수신
+//전송데이터 수신
 		request.setCharacterEncoding("utf-8");
 		String custId 	= request.getParameter("custId");
 		String name 	= request.getParameter("name");
 		String addr 	= request.getParameter("addr");
 		String phone	= request.getParameter("phone");
-			
+	
 	
 	
 	
 		
 		try{
-			
-			Connection conn = DBCP.getConnection(); 
-			
+	
+	Connection conn = DBHelper.getConnection(); 
+	
 		
 		String sql = "INSERT INTO `customer` VALUES (?,?,?,?);";
 		PreparedStatement psmt = conn.prepareStatement(sql);
@@ -45,6 +44,4 @@
 	
 	
 	response.sendRedirect("./list.jsp");
-	
-
 %>

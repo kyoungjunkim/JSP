@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-	List <BookBean> books = null;
+List <BookBean> books = null;
 	
 	try{
-		Connection conn = DBCP.getConnection();
+		Connection conn = DBHelper.getConnection();
 		
 		Statement stmt = conn.createStatement();
 		
@@ -21,13 +21,13 @@
 		
 
 		while(rs.next()){
-			BookBean bb = new BookBean();
-			bb.setBookId(rs.getInt(1));
-			bb.setBookName(rs.getString(2));
-			bb.setPublisher(rs.getString(3));
-			bb.setPrice(rs.getInt(4));
-			
-			books.add(bb);
+	BookBean bb = new BookBean();
+	bb.setBookId(rs.getInt(1));
+	bb.setBookName(rs.getString(2));
+	bb.setPublisher(rs.getString(3));
+	bb.setPrice(rs.getInt(4));
+	
+	books.add(bb);
 		}
 		rs.close();
 		stmt.close();
@@ -37,11 +37,6 @@
 	}catch(Exception e){
 		e.printStackTrace();
 	}
-
-
-
-
-
 %>
 <!DOCTYPE html>
 <html>

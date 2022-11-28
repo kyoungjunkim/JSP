@@ -3,7 +3,7 @@
 <%@page import="kr.co.jboard1.db.DBCP"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	//전송 데이터 수신
+//전송 데이터 수신
 	request.setCharacterEncoding("utf-8");
 	String uid    = request.getParameter("uid");
 	String name   = request.getParameter("name");
@@ -13,7 +13,7 @@
 	String addr   = request.getParameter("addr");
 	String hp     = request.getParameter("hp");
 	try{
-		Connection conn = DBCP.getConnection("dbcp_java1db");
+		Connection conn = DBHelper.getConnection("dbcp_java1db");
 		
 		String sql = "UPDATE `user5` SET `name`=?, `birth`=?, `gender`=?, `age`=?, `addr`=?, `hp`=? ";
 		       sql += "WHERE `uid`=?";
@@ -37,5 +37,4 @@
 	}
 	
 	response.sendRedirect("./list.jsp");
-	
 %>

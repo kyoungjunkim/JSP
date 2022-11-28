@@ -2,6 +2,13 @@
 <modules>
   <module moduleId="org.eclipse.jst.jee.server:Ch06" serverId="Tomcat v9.0 Server at localhost (2)"/>
   <module moduleId="org.eclipse.jst.jee.server:Jboard1" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Ch07" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:BookStore" serverId="Tomcat v9.0 Server at localhost (2)"/>
-  <module moduleId="org.eclipse.jst.jee.server:Shop" serverId="Tomcat v9.0 Server at localhost (2)"/>
+  <module moduleId="org.eclipse.jst.jee.server:Farmstory1" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Ch08" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Ch09" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Bookstore2" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Farmstory2" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:JBoard2" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:College" serverId="Tomcat v9.0 Server at localhost"/>
 </modules>

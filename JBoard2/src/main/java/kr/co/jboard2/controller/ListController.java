@@ -26,27 +26,32 @@ public class ListController extends HttpServlet  {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String pg = req.getParameter("pg");
-
-		// 현재 페이지 번호
-		int currentPage = service.getCurrentPage(pg);
-				
-		// 전체 게시물 갯수 
-		int total = service.selectCountTotal();
+		String search = req.getParameter("search");
 		
-		// 마지막 페이지 번호
-		int lastPageNum = service.getLastPageNum(total);
+		int currentPage = service.getCurrentPage(pg); // 현재 페이지 번호
+		int total = 0;
 		
-		// 페이지 그룹 start, end 번호
-		int[] result = service.getPageGroupNum(currentPage, lastPageNum);
 		
-		// 페이지 시작번호
-		int pageStartNum = service.getPageStartNum(total, currentPage);
+		if(search == null) {
+			total = service.selectCountTotal(); // 전체 게시물 갯수 
+		}else {
+			total = service.selectCountTotalForSearch(search); // 검색 게시물 갯수 
+		}
 		
-		// 시작 인덱스
-		int start = service.getStartNum(currentPage);
+		
+		int lastPageNum = service.getLastPageNum(total);// 마지막 페이지 번호
+		int[] result = service.getPageGroupNum(currentPage, lastPageNum); // 페이지 그룹번호
+		int pageStartNum = service.getPageStartNum(total, currentPage); // 페이지 시작번호
+		int start = service.getStartNum(currentPage); // 시작 인덱스
 		
 		// 글 가져오기
-		List<ArticleVo> articles = service.selectArticles(start);
+		List<ArticleVo> articles = null; 
+		if(search == null) {
+			articles = service.selectArticles(start); // 전체 게시물 갯수 
+		}else {
+			articles = service.selectArticleByKeyword(search,start); // 검색 게시물 갯수 
+		}
+		
 		
 		req.setAttribute("articles", articles);
 		req.setAttribute("lastPageNum", lastPageNum);		
@@ -54,6 +59,7 @@ public class ListController extends HttpServlet  {
 		req.setAttribute("pageGroupStart", result[0]);
 		req.setAttribute("pageGroupEnd", result[1]);
 		req.setAttribute("pageStartNum", pageStartNum+1);
+		req.setAttribute("search", search);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/list.jsp");
 		dispatcher.forward(req, resp);

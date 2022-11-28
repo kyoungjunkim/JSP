@@ -1,7 +1,6 @@
 package kr.co.jboard2.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,9 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import kr.co.jboard2.dao.ArticleDAO;
-import kr.co.jboard2.vo.ArticleVo;
 
 @WebServlet("/view.do")
 public class ViewController extends HttpServlet  {
@@ -23,27 +19,6 @@ public class ViewController extends HttpServlet  {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String no = req.getParameter("no");
-		String pg = req.getParameter("pg");
-		// DAO 객체 가져오기
-		ArticleDAO dao = ArticleDAO.getInstance();
-		
-		
-		
-		// 글 조회수 카운트 +1
-		dao.updateArticleHit(no);
-		
-		// 글 가져오기
-		ArticleVo article = dao.selectArticle(no);
-		req.setAttribute("articles", articles);
-		
-		
-		
-		// 댓글 가져오기
-		List<ArticleVo> comments = dao.selectComments(no);
-		
-		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view.jsp");
 		dispatcher.forward(req, resp);
 	}
