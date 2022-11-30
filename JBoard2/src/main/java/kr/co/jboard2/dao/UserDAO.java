@@ -252,7 +252,28 @@ public class UserDAO extends DBHelper {
 		return vo;
 	}
 	
-	public void updateUser() {}
+	public void updateUser(UserVo vo) {
+		
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.UPDATE_USER);
+			psmt.setString(1, vo.getPass());
+			psmt.setString(2, vo.getName());
+			psmt.setString(3, vo.getNick());
+			psmt.setString(4, vo.getEmail());
+			psmt.setString(5, vo.getHp());
+			psmt.setString(6, vo.getZip());
+			psmt.setString(7, vo.getAddr1());
+			psmt.setString(8, vo.getAddr2());
+			psmt.setString(9, vo.getRegip());
+			psmt.executeUpdate();
+			close();
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+	}
 	
 	public int updateUserPassword(String uid, String pass) {
 		
@@ -301,5 +322,16 @@ public class UserDAO extends DBHelper {
 		}
 	}
 	
-	public void deleteUser() {}
+	public void deleteUser(String uid) {
+		
+		try {
+		conn = getConnection();
+		psmt = conn.prepareStatement(Sql.DELETE_USER);
+		psmt.setString(1, uid);
+		psmt.executeUpdate();
+		close();
+	}catch (Exception e) {
+		logger.error(e.getMessage());
+	}
+}
 }
