@@ -51,7 +51,7 @@
                     <form action="#">
                         <textarea name="content">댓글내용 입력</textarea>
                         <div>
-                            <a href="#" class="btn btnCancel">취소</a>
+                            <a href="/JBoard2/list.do" class="btn btnCancel">취소</a>
                             <input type="submit" value="작성완료" class="btn btnComplete"/>
                         </div>
                     </form>

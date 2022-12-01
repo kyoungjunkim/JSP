@@ -2,8 +2,7 @@
 <jsp:include page="./_header.jsp"/>
         <main id="board">
             <section class="modify">
-
-                <form action="/JBoard2/modify.do" method="post" >
+                <form action="/JBoard2/modify.do" method="post">
                     <table border="0">
                         <caption>글수정</caption>
                         <tr>
@@ -33,3 +32,6 @@
             </section>
         </main>
         <jsp:include page="./_footer.jsp"/>
+        
+        
+        

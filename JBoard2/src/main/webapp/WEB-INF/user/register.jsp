@@ -3,10 +3,6 @@
 <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/JBoard2/js/postcode.js"></script>
 <script src="/JBoard2/js/validation.js"></script>
-<script>
-	
-
-</script>
 <main id="user">
     <section class="register">
         <form action="/JBoard2/user/register.do" method="post">
@@ -16,7 +12,7 @@
                     <td>아이디</td>
                     <td>
                         <input type="text" name="uid" placeholder="아이디 입력"/>
-                        <button type="button" id="btnUidCheck"><img src="../img/chk_id.gif" alt="중복확인"/></button>
+                        <button type="button" id="btnUidCheck"><img src="/JBoard2/img/chk_id.gif" alt="중복확인"/></button>
                         <span class="resultUid"></span>
                     </td>
                 </tr>
@@ -47,7 +43,7 @@
                     <td>
                         <p class="nickInfo">공백없는 한글, 영문, 숫자 입력</p>
                         <input type="text" name="nick" placeholder="별명 입력"/>
-                        <button type="button" id="btnNickCheck"><img src="../img/chk_id.gif" alt="중복확인"/></button>
+                        <button type="button" id="btnNickCheck"><img src="/JBoard2/img/chk_id.gif" alt="중복확인"/></button>
                         <span class="resultNick"></span>
                     </td>
                 </tr>
@@ -56,10 +52,10 @@
                     <td>
                         <input type="email" name="email" placeholder="이메일 입력"/>
                         <span class="resultEmail"></span>
-                        <button type="button" id="btnEmail"><img src="../img/chk_auth.gif" alt="인증번호 받기"/></button>
+                        <button type="button" id="btnEmail"><img src="/JBoard2/img/chk_auth.gif" alt="인증번호 받기"/></button>
                         <div class="auth">
                             <input type="text" name="auth" placeholder="인증번호 입력"/>
-                            <button type="button" id="btnEmailConfirm"><img src="../img/chk_confirm.gif" alt="확인"/></button>
+                            <button type="button" id="btnEmailConfirm"><img src="/JBoard2/img/chk_confirm.gif" alt="확인"/></button>
                         </div>
                     </td>
                 </tr>

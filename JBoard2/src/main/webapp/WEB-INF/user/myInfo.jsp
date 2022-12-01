@@ -9,7 +9,7 @@
 		
 		$('.btnDelete').click(function() {
 			
-			let uid = $('.uid').val();
+			let uid = $('input[name=uid]').val();
 			 
 			
 			
@@ -42,11 +42,12 @@
 <main id="user">
     <section class="register">
         <form action="/JBoard2/user/myInfo.do" method="post">
+          <input type="hidden" name="uid" value ="${uid }">
             <table border="1">
                 <caption>회원정보 설정</caption>
                 <tr>
                     <td>아이디</td>
-                    <td class = "uid">${uid}</td>
+                    <td>${uid}</td>
                 </tr>
                 <tr>
                     <td>비밀번호</td>
@@ -64,7 +65,7 @@
                 </tr>
                 <tr>
                     <td>회원가입일</td>
-                    <td>2022-11-22 11:29:52</td>
+                    <td>${sessUser.rdate}</td>
                 </tr>
             </table>
 
@@ -73,7 +74,7 @@
                 <tr>
                     <td>이름</td>
                     <td>
-                        <input type="text" name="name" placeholder="이름 입력"/>
+                        <input type="text" name="name" placeholder="이름 입력" value="${sessUser.name }">
                         <span class="resultName"></span>     
                     </td>
                 </tr>
@@ -81,37 +82,37 @@
                     <td>별명</td>
                     <td>
                         <p class="nickInfo">공백없는 한글, 영문, 숫자 입력</p>
-                        <input type="text" name="nick" placeholder="별명 입력"/>
-                        <button type="button" id="btnNickCheck"><img src="../img/chk_id.gif" alt="중복확인"/></button>
+                        <input type="text" name="nick" placeholder="별명 입력" value="${sessUser.nick }">
+                        <button type="button" id="btnNickCheck"><img src="/JBoard2/img/chk_id.gif" alt="중복확인"/></button>
                         <span class="resultNick"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>이메일</td>
                     <td>
-                        <input type="email" name="email" placeholder="이메일 입력"/>
+                        <input type="email" name="email" placeholder="이메일 입력" value="${sessUser.email }">
                         <span class="resultEmail"></span>
-                        <button type="button" id="btnEmail"><img src="../img/chk_auth.gif" alt="인증번호 받기"/></button>
+                        <button type="button" id="btnEmail"><img src="/JBoard2/img/chk_auth.gif" alt="인증번호 받기"/></button>
                         <div class="auth">
                             <input type="text" name="auth" placeholder="인증번호 입력"/>
-                            <button type="button" id="btnEmailConfirm"><img src="../img/chk_confirm.gif" alt="확인"/></button>
+                            <button type="button" id="btnEmailConfirm"><img src="/JBoard2/img/chk_confirm.gif" alt="확인"/></button>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>휴대폰</td>
                     <td>
-                    	<input type="text" name="hp" placeholder="휴대폰 입력"/>
+                    	<input type="text" name="hp" placeholder="휴대폰 입력" value="${sessUser.hp }">
                     	<span class="resultHp"></span>
                     </td>
                 </tr>
                 <tr>
 	                <td>주소</td>
 	                <td>
-	                    <input type="text" name="zip" id="zip" placeholder="우편번호 검색" readonly/>
+	                    <input type="text" name="zip" id="zip" placeholder="우편번호 검색" readonly value="${sessUser.zip }">
 	                    <button type="button" onclick="postcode()"><img src="/JBoard2/img/chk_post.gif" alt="우편번호 찾기"/></button>
-	                    <input type="text" name="addr1" id="addr1" placeholder="기본주소 검색" readonly/>
-	                    <input type="text" name="addr2" id="addr2" placeholder="상세주소 입력"/>
+	                    <input type="text" name="addr1" id="addr1" placeholder="기본주소 검색" readonly value="${sessUser.addr1 }"/>
+	                    <input type="text" name="addr2" id="addr2" placeholder="상세주소 입력" value="${sessUser.addr2 }"/>
 	                </td>
 	            </tr>
 	            <tr>
@@ -124,7 +125,7 @@
             </table>
 
             <div>
-                <a href="/JBoard2/user/login" class="btn btnCancel">취소</a>
+                <a href="/JBoard2/list.do" class="btn btnCancel">취소</a>
                 <input type="submit" value="회원수정" class="btn btnModify"/>
             </div>
 

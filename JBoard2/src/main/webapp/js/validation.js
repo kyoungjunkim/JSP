@@ -293,46 +293,6 @@ $(function(){
 		return true;
 	});
 	
-	$('.modify > form').submit(function(){
-					
-		////////////////////////////////////
-		// 폼 데이터 유효성 검증(Validation)
-		////////////////////////////////////
-		
-		// 비밀번호 검증
-		if(!isPassOk){
-			alert('비밀번호를 확인 하십시요.');
-			return false;
-		}
-		// 이름 검증
-		if(!isNameOk){
-			alert('이름을 확인 하십시요.');
-			return false;
-		}
-		// 별명 검증
-		if(!isNickOk){
-			alert('별명을 확인 하십시요.');
-			return false;
-		}
-		// 이메일 검증
-		if(!isEmailOk){
-			alert('이메일을 확인 하십시요.');
-			return false;
-		}
-		// 이메일 인증코드 검증
-		if(!isEmailAuthCodeOk){
-			alert('이메일을 인증을 수행 하십시요.');
-			return false;
-		}
-		// 휴대폰 검증
-		if(!isHpOk){
-			alert('휴대폰을 확인 하십시요.');
-			return false;
-		}
-		
-		// 최종 전송
-		return true;
-	});
-
+	
 	
 });

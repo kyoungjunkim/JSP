@@ -252,7 +252,9 @@ public class UserDAO extends DBHelper {
 		return vo;
 	}
 	
-	public void updateUser(UserVo vo) {
+	public int updateUser(UserVo vo) {
+		
+		int result = 0;
 		
 		
 		try {
@@ -272,7 +274,7 @@ public class UserDAO extends DBHelper {
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		
+		return result;
 	}
 	
 	public int updateUserPassword(String uid, String pass) {
@@ -322,7 +324,9 @@ public class UserDAO extends DBHelper {
 		}
 	}
 	
-	public void deleteUser(String uid) {
+	public int deleteUser(String uid) {
+		
+		int result = 0;
 		
 		try {
 		conn = getConnection();
@@ -333,5 +337,6 @@ public class UserDAO extends DBHelper {
 	}catch (Exception e) {
 		logger.error(e.getMessage());
 	}
+		return result;
 }
 }
