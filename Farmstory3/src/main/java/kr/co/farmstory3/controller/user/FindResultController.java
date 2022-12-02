@@ -8,12 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import kr.co.farmstory3.vo.UserVO;
-
-@WebServlet("/user/findIdResult.do")
-public class FindIdResultController extends HttpServlet {
+@WebServlet("/user/findResult.do")
+public class FindResultController extends HttpServlet{
 	
 private static final long serialVersionUID = 1L;
 	
@@ -23,14 +20,7 @@ private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		//HttpSession sess = req.getSession();
-		//UserVO vo = (UserVO) sess.getAttribute("sessUserForFindId");
-		
-		
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/user/findIdResult.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/user/findResult.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

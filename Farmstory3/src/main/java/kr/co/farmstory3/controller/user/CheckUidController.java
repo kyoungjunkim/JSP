@@ -1,37 +1,39 @@
 package kr.co.farmstory3.controller.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import kr.co.farmstory3.vo.UserVO;
+import com.google.gson.JsonObject;
 
-@WebServlet("/user/findIdResult.do")
-public class FindIdResultController extends HttpServlet {
+import kr.co.farmstory3.dao.UserDAO;
+
+@WebServlet("/user/checkUid.do")
+public class CheckUidController extends HttpServlet{
 	
-private static final long serialVersionUID = 1L;
 	
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void init() throws ServletException {
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String uid = req.getParameter("uid");
 		
+		int result = UserDAO.getInstance().selectCountUid(uid);
 		
-		//HttpSession sess = req.getSession();
-		//UserVO vo = (UserVO) sess.getAttribute("sessUserForFindId");
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
 		
-		
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/user/findIdResult.jsp");
-		dispatcher.forward(req, resp);
+		PrintWriter writer = resp.getWriter();
+		writer.print(json.toString());
 	}
 	
 	@Override

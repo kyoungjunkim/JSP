@@ -2,7 +2,7 @@
 <jsp:include page="/WEB-INF/_header.jsp"/>
 <main id="user">
     <section class="login">
-        <form action="/Farmstory3/user/list.do">
+        <form action="/Farmstory3/user/login.do" method="post">
             <table border="0">
                 <tr>
                     <td><img src="/Farmstory3/img/login_ico_id.png" alt="아이디"/></td>
@@ -14,7 +14,7 @@
                 </tr>
             </table>
             <input type="submit" value="로그인" class="btnLogin"/>
-            <label><input type="checkbox" name="saveUid">아이디 기억하기</label>
+            <label><input type="checkbox" name="auto">자동 로그인</label>
         </form>
         <div>
             <h3>회원 로그인 안내</h3>
@@ -22,9 +22,9 @@
                 아직 회원이 아니시면 회원으로 가입하세요.
             </p>
             <div style="text-align: right;">
-                <a href="/user/findId.do">아이디 |</a>
-                <a href="/user/findPw.do">비밀번호찾기 |</a>
-                <a href="/user/terms.do">회원가입</a>
+                <a href="/Farmstory3/user/findId.do">아이디 |</a>
+                <a href="/Farmstory3/user/findPw.do">비밀번호찾기 |</a>
+                <a href="/Farmstory3/user/terms.do">회원가입</a>
             </div>                    
         </div>
     </section>

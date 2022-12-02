@@ -40,7 +40,7 @@ public class LogoutController extends HttpServlet {
 		// 데이터베이스 세션 로그아웃
 		UserDAO.getInstance().updateUserForSessionOut(uid);
 		
-		resp.sendRedirect("/JBoard2/user/login.do?success=201");
+		resp.sendRedirect("/Farmstory3/user/login.do?success=201");
 	}
 	
 	@Override

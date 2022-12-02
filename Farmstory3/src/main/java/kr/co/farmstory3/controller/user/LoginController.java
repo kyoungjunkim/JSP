@@ -25,7 +25,7 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/user/login.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/user/login.jsp");
 		dispatcher.forward(req, resp);	
 	}
 	
@@ -61,7 +61,7 @@ public class LoginController extends HttpServlet {
 				dao.updateUserForSession(uid, sessId);
 			}
 			
-			resp.sendRedirect("/Farmstory3/user/list.do");
+			resp.sendRedirect("/Farmstory3/index.do");
 			
 		}else {
 			// 회원 아님

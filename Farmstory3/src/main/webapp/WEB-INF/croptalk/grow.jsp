@@ -31,3 +31,5 @@
 
         </div>
 <jsp:include page ="/WEB-INF/_footer.jsp"/>
+
+<img src ="/Farmstory3/img/sub_nav_tit_cate3_school.png" alt =""/>

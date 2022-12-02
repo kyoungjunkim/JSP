@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="/Farmstory3/css/board.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <script>
         $(function(){
             $('.slider > ul').bxSlider({
@@ -22,7 +23,13 @@
             });
 
             $('#tabs').tabs();
+            
+            
+            $('.loginNick').css('color','blue');
         });
+        
+
+        
     </script>
 
 </head>
@@ -30,12 +37,23 @@
     <div id="wrapper">
         <header>
             <a href="/Farmstory3/index.do" class="logo"><img src="/Farmstory3/img/logo.png" alt="로고"/></a>
+            <c:if test="${null eq sessUser}">
             <p>
                 <a href="/Farmstory3/index.do">HOME |</a>
                 <a href="/Farmstory3/user/login.do">로그인 |</a>
                 <a href="/Farmstory3/user/terms.do">회원가입 |</a>
                 <a href="/Farmstory3/board/list.do?group=community&cate=qna">고객센터</a>
             </p>
+            </c:if>
+            <c:if test ="${null ne sessUser}">
+           
+            <p>
+            	<span class = "loginNick">${sessUser.nick}</span>님 반갑습니다.
+                <a href="/Farmstory3/index.do">ㅣHOME |</a>
+                <a href="/Farmstory3/user/logout.do">로그아웃 |</a>
+                <a href="/Farmstory3/board/list.do?group=community&cate=qna">고객센터</a>
+            </p>
+            </c:if>
             <img src="/Farmstory3/img/head_txt_img.png" alt="3만원 이상 무료배송"/>
             
             <ul class="gnb">

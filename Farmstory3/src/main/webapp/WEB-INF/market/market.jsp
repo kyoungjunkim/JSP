@@ -12,7 +12,7 @@
                 </aside>
                 <article>
                     <nav>
-                        <img src="../img/sub_nav_tit_cate2_tit1.png" alt="장보기"/>
+                        <img src="/Farmstory3/img/sub_nav_tit_cate2_tit1.png" alt="장보기"/>
                         <p>
                             HOME > 장보기 > <em>장보기</em>
                         </p>

@@ -3,8 +3,8 @@
 <jsp:include page="./_${group}.jsp"/>
 <main id="board">
     <section class="write">
-
-        <form action="#">
+        <form action="#" method="post" enctype="multipart/form-data">
+         <input type="hidden" name="uid" value="${sessUser.uid}"/>
             <table border="0">
                 <caption>글쓰기</caption>
                 <tr>
